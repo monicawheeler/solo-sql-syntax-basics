@@ -107,9 +107,11 @@ JOIN heroes_powers ON heroes_powers.hero_id = heroes.id
 JOIN powers ON powers.id = heroes_powers.power_id
 WHERE powers.name = 'Super Strength' AND heroes_powers.power_level > 2;
 
--- TODO:
+
 -- 10. Find the average power level for all powers. Include the power name and descriptions.
---SELECT AVG("power_level")
---FROM heroes_powers
---GROUP BY powers.name, powers.description;
+SELECT AVG(heroes_powers.power_level)
+FROM heroes
+JOIN heroes_powers ON heroes.id = heroes_powers.hero_id
+JOIN powers ON powers.id = heroes_powers.power_id;
+--GROUP BY powers.name;
 
